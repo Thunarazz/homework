@@ -13,7 +13,6 @@ public class GameController {
 
     private final Map<String, Game> games = new HashMap<>();
 
-    // Создание новой игры
     @PostMapping
     public Map<String, String> startGame() {
         String gameId = UUID.randomUUID().toString();
@@ -22,7 +21,6 @@ public class GameController {
         return Map.of("gameId", gameId);
     }
 
-    // Угадывание числа
     @GetMapping("/{gameId}/guess/{number}")
     public String guessNumber(@PathVariable String gameId, @PathVariable int number) {
         Game game = games.get(gameId);
